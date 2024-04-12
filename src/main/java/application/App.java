@@ -62,11 +62,5 @@ public class App {
         System.out.println("\n-----Conteudos Finalizados:-----" + dev2.getConteudosFinalizados());
         System.out.println("XP: " + dev2.calcularTotalXp());
         System.out.println("===============================");
-
-
-
-
-
-
     }
 }
