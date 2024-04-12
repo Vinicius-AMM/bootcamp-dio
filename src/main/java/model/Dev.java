@@ -49,8 +49,23 @@ public class Dev {
         return Objects.hash(nome, conteudosMatriculados, conteudosFinalizados);
     }
 
-    public void setCursos(Cursos cursos) {
-        this.cursos = cursos;
+    public void progredir(){
+        Optional<Conteudo> conteudo = this.conteudosMatriculados.stream().findFirst();
+        if(conteudo.isPresent()){
+            conteudosFinalizados.add(conteudo.get());
+            conteudosMatriculados.remove(conteudo.get());
+        }else {
+            System.out.println("Voce nao esta matriculado em nenhum conteudo!");
+        }
+    }
+
+    public double calcularTotalXp(){
+        Iterator<Conteudo> iterator = this.conteudosFinalizados.iterator();
+        double sum = 0;
+        while (iterator.hasNext()){
+            sum += iterator.next().calcularXP();
+        }
+        return sum;
     }
 
 }
